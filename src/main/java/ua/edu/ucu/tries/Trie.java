@@ -1,6 +1,7 @@
 package ua.edu.ucu.tries;
 
-public interface Trie {
+public interface Trie
+{
 
     public void add(Tuple word);
 

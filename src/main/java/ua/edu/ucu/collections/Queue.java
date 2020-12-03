@@ -10,7 +10,9 @@ public class Queue
     {
         return queue.getFirst();
     }
-     public Object dequeue()
+
+    public boolean isEmpty() { return queue.isEmpty(); }
+    public Object dequeue()
      {
         Object peakedElement = queue.getFirst();
         queue = queue.removeFirst();
