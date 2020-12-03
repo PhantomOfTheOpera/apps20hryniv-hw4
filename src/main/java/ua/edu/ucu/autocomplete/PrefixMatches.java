@@ -1,5 +1,6 @@
 package ua.edu.ucu.autocomplete;
 
+import ua.edu.ucu.iterators.TrieLengthKIterator;
 import ua.edu.ucu.tries.Trie;
 import ua.edu.ucu.tries.Tuple;
 
@@ -62,7 +63,13 @@ public class PrefixMatches
 
     public Iterable<String> wordsWithPrefix(String pref, int k)
     {
-        throw new UnsupportedOperationException("Not supported yet.");        
+        if (pref.length() < 2) {
+            throw new IllegalArgumentException("Fatal error! Prefix length less than 2!");
+        }
+        if (k < 0) {
+            throw new IllegalArgumentException("Fatal error! k < 0!");
+        }
+        return TrieLengthKIterator.words(trie.wordsWithPrefix(pref), k);
     }
 
     public int size() {

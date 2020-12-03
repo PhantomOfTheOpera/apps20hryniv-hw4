@@ -3,8 +3,6 @@ package ua.edu.ucu.tries;
 
 import ua.edu.ucu.iterators.TrieIterator;
 
-import java.util.Collections;
-
 public class RWayTrie implements Trie
 {
 
@@ -16,12 +14,12 @@ public class RWayTrie implements Trie
     }
 
     private Node root;
-    private int len;
+    private int length;
 
     public RWayTrie()
     {
         root = new Node();
-        this.len = 0;
+        this.length = 0;
     }
 
     public int getNode(String word)
@@ -54,7 +52,7 @@ public class RWayTrie implements Trie
     {
 
         root = add(root, t.term, t.weight, 0);
-        len += 1;
+        length += 1;
     }
 
     private Node add(Node node, String term, int weight, int d)
@@ -91,7 +89,7 @@ public class RWayTrie implements Trie
       }
       else
       {
-          len -= 1;
+          length -= 1;
           root = delete(root, word, 0);
           return true;
       }
@@ -125,7 +123,8 @@ public class RWayTrie implements Trie
     }
 
     @Override
-    public Iterable<String> wordsWithPrefix(String s) {
+    public Iterable<String> wordsWithPrefix(String s)
+    {
         Node node = getNode(root, s, 0);
          return TrieIterator.wordsIter(node, s);
     }
@@ -134,7 +133,7 @@ public class RWayTrie implements Trie
 
     @Override
     public int size() {
-       return len;
+       return length;
     }
 
 }
